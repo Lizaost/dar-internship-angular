@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dar-internship"
+    }
+  },
+  "defaultProject": "dar-internship",
+  "cli": {
+    "analytics": "038ca8af-1f78-4fd2-a6f3-a8572b11e992"
+  }
 }

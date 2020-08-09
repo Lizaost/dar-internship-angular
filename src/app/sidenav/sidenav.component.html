@@ -1,0 +1,15 @@
+<div class="sidenav-wrapper">
+  <nav>
+    <ul class="nav-wrapper">
+      <ng-container *ngFor="let navItem of navItems">
+        <li class="nav-item" *ngIf="navItem.enabled">
+          <a
+            [href]="navItem.url"
+            [ngClass]="{'disabled' : !navItem.url}">
+            {{navItem.title}}
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>
+</div>
