@@ -7,11 +7,8 @@ import {NavItem} from '../shared/types';
   styleUrls: ['./logo.component.scss']
 })
 export class LogoComponent implements OnInit {
-
-  showLoginBtn = true;
-
   @Input()
-  image = ' ';
+  image = '';
 
   constructor() {
   }
