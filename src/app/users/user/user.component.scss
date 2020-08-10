@@ -1,0 +1,68 @@
+:host{
+  font-family: sans-serif;
+}
+
+.go-back-link{
+  display: inline-block;
+  width: auto;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  padding: 0.5rem;
+  padding-left: 1.3rem;
+  margin: 0 0 1rem 0;
+  border-radius: 4px;
+  text-decoration: none;
+  position: relative;
+
+  transition-duration: 500ms;
+  transition-property: background-color, color;
+
+  &:hover{
+    transition-duration: 500ms;
+    transition-property: background-color, color;
+    background-color: #1976d2;
+    color: white;
+    &:before{
+      transition-duration: 500ms;
+      transition-property: border-left-color, border-bottom-color;
+      border-left: 2px solid white;
+      border-bottom: 2px solid white;
+    }
+  }
+
+  &:before{
+    content: ' ';
+    height: 0.7rem;
+    width: 0.7rem;
+    border-left: 2px solid #1976d2;
+    border-bottom: 2px solid #1976d2;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    margin-top: -0.4rem;
+    transition-duration: 500ms;
+    transition-property: border-left-color, border-bottom-color;
+  }
+}
+
+h1{
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+.user-info{
+  border-collapse: collapse;
+  tr, td{
+    border-collapse: collapse;
+  }
+  td{
+    border: 1px solid black;
+    padding: 0.5rem;
+    &:first-child{
+      font-weight: bolder;
+    }
+  }
+}
+
+
