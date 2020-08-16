@@ -31,6 +31,9 @@ import {AuthModule} from './auth/auth.module';
     SharedModule
   ],
   providers: [],
+  exports: [
+    LogoComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
