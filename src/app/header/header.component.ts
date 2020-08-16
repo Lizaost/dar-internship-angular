@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NavItem} from '../shared/types';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +14,14 @@ export class HeaderComponent implements OnInit {
   @Input()
   navItems: NavItem[] = [];
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   onLoginClick(): void {
-    alert('Welcome');
+    this.router.navigate(['auth']);
     this.showLoginBtn = false;
   }
 
