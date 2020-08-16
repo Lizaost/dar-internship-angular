@@ -14,7 +14,7 @@ import {UsersService} from '../services/users.service';
 })
 export class UsersComponent implements OnInit {
   users$: Observable<User[]>;
-  searchInput = 'search';
+  searchInput = '';
 
   constructor(
     private httpClient: HttpClient,
