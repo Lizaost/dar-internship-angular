@@ -12,7 +12,7 @@
     </tr>
     <tr>
       <td>Name</td>
-      <td>{{user.name}}</td>
+      <td>{{user.name | uppercase}}</td>
     </tr>
     <tr>
       <td>Phone number</td>
@@ -28,12 +28,11 @@
     </tr>
     <tr>
       <td>Address</td>
-      <td>{{user.address.city}}, {{user.address.street}}, {{user.address.suite}},<br>zip code: {{user.address.zipcode}}<br/>
-      coordinates: (lat: {{user.address.geo.lat}}, lng: {{user.address.geo.lng}})</td>
+      <td>{{user.address | concatField : 'city':'street'}}</td>
     </tr>
     <tr>
       <td>Company</td>
-      <td>{{user.company.name}}<br><i>{{user.company.bs}}</i><br>{{user.company.catchPhrase}}</td>
+      <td>{{user.company | concatField:'name':'catchPhrase'}}</td>
     </tr>
   </table>
 </ng-container>

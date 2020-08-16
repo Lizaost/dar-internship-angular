@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {LogoComponent} from './logo/logo.component';
-import {UsersComponent} from './users/users/users.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {LayoutComponent} from './layout/layout.component';
-import {UserComponent} from './users/user/user.component';
+import {UsersModule} from './users/users.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,15 +18,15 @@ import {UserComponent} from './users/user/user.component';
     HeaderComponent,
     SidenavComponent,
     LogoComponent,
-    UsersComponent,
     NotFoundComponent,
     LayoutComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    UsersModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

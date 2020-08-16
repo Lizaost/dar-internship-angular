@@ -1,5 +1,8 @@
 <h1>Users</h1>
 <div class="users-table">
+  <input type="text" [(ngModel)]="searchInput" (ngModelChange)="searchChange($event)">
+  <button (click) = "searchClear()">Clear</button>
+  <button (click) = "search()">Search</button>
   <table>
     <thead>
     <tr>
@@ -10,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users" (click)="navigateToUser(user.id)">
+    <tr *ngFor="let user of users$ | async" (click)="navigateToUser(user.id)">
       <td>{{user.id}}</td>
       <td>{{user.username}}</td>
       <td>{{user.name}}</td>

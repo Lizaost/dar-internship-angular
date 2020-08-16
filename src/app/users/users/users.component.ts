@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NavItem, User} from '../../shared/types';
 import {HttpClient} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
+import {UsersService} from '../services/users.service';
 
 
 @Component({
@@ -12,29 +13,42 @@ import {Router} from '@angular/router';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  users: User[] = [];
+  users$: Observable<User[]>;
+  searchInput = 'search';
 
   constructor(
     private httpClient: HttpClient,
-    private router: Router) {
+    private router: Router, private usersService: UsersService) {
   }
 
   ngOnInit(): void {
-    this.httpClient.get<User[]>('https://jsonplaceholder.typicode.com/users')
-      .pipe(
-        catchError((err) => {
-          console.log('Error trying to get users, ', err);
-          return of([]);
-        })
-      )
-      .subscribe(data => {
-        console.log(data);
-        this.users = data;
-      });
+    this.getData();
   }
 
-  navigateToUser(id: number): void{
+  getData(): void {
+    this.users$ = this.usersService.getUsers()
+      .pipe(
+        map(users => this.searchInput ? users.filter(user => user.name.includes(this.searchInput)) : users)
+      );
+  }
+
+  navigateToUser(id: number): void {
     this.router.navigate(['/users', id]);
+  }
+
+  searchChange(event): void {
+    console.log(event);
+    this.getData();
+  }
+
+  search(): void {
+    console.log(this.searchInput);
+    this.getData();
+  }
+
+  searchClear(): void {
+    this.searchInput = '';
+    this.getData();
   }
 
 }
