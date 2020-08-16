@@ -11,6 +11,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {LayoutComponent} from './layout/layout.component';
 import {UsersModule} from './users/users.module';
 import {SharedModule} from './shared/shared.module';
+import {AuthModule} from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {SharedModule} from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     UsersModule,
+    AuthModule,
     SharedModule
   ],
   providers: [],
