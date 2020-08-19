@@ -13,15 +13,20 @@
           </a>
         </li>
       </ng-container>
-      <li>
-        <button
-          class="login-btn"
-          type="button"
-          (click)=onLoginClick()
-          *ngIf="showLoginBtn">
+      <li *ngIf="!isLoggedIn; else showLogout" class="nav-item">
+        <a
+          [routerLink]="['/auth/login']">
           Login
-        </button>
+        </a>
       </li>
+      <ng-template #showLogout>
+        <li class="nav-item">
+          <a
+            [routerLink]="['/auth/logout']">
+            Logout
+          </a>
+        </li>
+      </ng-template>
     </ul>
   </nav>
 </div>

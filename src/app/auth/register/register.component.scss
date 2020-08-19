@@ -1,0 +1,53 @@
+:host {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #1976d2;
+}
+
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+
+    input.form-control {
+      font-size: 18px;
+      padding: 0.3rem;
+      border: 2px solid #aaa;
+      border-radius: 8px;
+      background: transparent;
+      transition-duration: 500ms;
+
+      &:focus {
+        border: 2px solid #1976d2;
+      }
+    }
+
+    button.form-control {
+      font-size: 18px;
+      padding: 0.5rem 1rem;
+      border: 2px solid #1976d2;
+      border-radius: 8px;
+      color: #1976d2;
+      background: transparent;
+      transition-duration: 500ms;
+
+      &:hover {
+        color: white;
+        background: #1976d2;
+        transition-duration: 500ms;
+      }
+    }
+  }
+
+}

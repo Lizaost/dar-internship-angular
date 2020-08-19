@@ -1,14 +1,15 @@
-<h1>Log in</h1>
+<h1>Register</h1>
 <div class="login-form-wrapper">
-  <form>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
     <div class="form-group">
       <input type="text"
              placeholder="Login"
              name="login"
              id="login-input"
              class="form-control"
-             [(ngModel)]="loginInput"
-             (ngModelChange)="logLoginAndPassword()">
+             [(ngModel)]="username">
     </div>
     <div class="form-group">
       <input type="password"
@@ -16,14 +17,13 @@
              name="password"
              id="login-password"
              class="form-control"
-             [(ngModel)]="passwordInput"
-             (ngModelChange)="logLoginAndPassword()">
+             [(ngModel)]="password">
     </div>
     <div class="form-group">
-      <button type="submit"
-              class="form-control">
-        Log in
+      <button type="button"
+              class="form-control"
+      (click)="onSubmit()">
+        Register
       </button>
     </div>
-  </form>
 </div>

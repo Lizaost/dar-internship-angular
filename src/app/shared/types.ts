@@ -18,8 +18,8 @@ export interface User {
 export interface Address {
   city: string;
   geo: {
-    lat: string,​​
-    lng: string;
+    lat: string,
+    lng: string
   };
   street: string;
   suite: string;
@@ -30,4 +30,12 @@ export interface Company {
   bs: string;
   catchPhrase: string;
   name: string;
+}
+
+export interface AuthInfo {
+  access_token: string;
+  expires_in: number;
+  id_token: string;
+  refresh_token: string;
+  token_type: string;
 }
