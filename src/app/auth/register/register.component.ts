@@ -12,8 +12,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  // username = '';
-  // password = '';
   errorMessage = '';
   form: FormGroup;
 
