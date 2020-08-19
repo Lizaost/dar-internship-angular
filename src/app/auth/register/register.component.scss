@@ -15,9 +15,14 @@ h1 {
   flex-direction: column;
   align-items: center;
 
+  .auth-form {
+    width: 220px;
+  }
+
   .form-group {
     margin-bottom: 1rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     input.form-control {
@@ -48,6 +53,18 @@ h1 {
         transition-duration: 500ms;
       }
     }
+  }
+
+  .error-message{
+    padding: 0.5rem;
+    margin-bottom: 0.8rem;
+    background-color: #FFE0B2;
+    color: #000;
+  }
+
+  .form-error{
+    color: #D32F2F;
+    padding-top: 0.5rem;
   }
 
 }
