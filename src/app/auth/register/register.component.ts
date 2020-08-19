@@ -4,6 +4,7 @@ import {catchError} from 'rxjs/operators';
 import {HttpErrorResponse} from '@angular/common/http';
 import {EMPTY} from 'rxjs';
 import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +12,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  username = '';
-  password = '';
+  // username = '';
+  // password = '';
   errorMessage = '';
+  form: FormGroup;
 
   constructor(
     private authService: AuthService,
@@ -21,25 +23,23 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
+    });
   }
 
   onSubmit(): void {
-    console.log(`Login: ${this.username}\nPassword: ${this.password}`);
+    console.log(this.form);
 
     this.errorMessage = '';
 
-    if (!this.username || !this.password) {
-      this.errorMessage = 'Fill all required fields';
-      return;
-    }
-
-    this.authService.register(this.username, this.password)
+    this.authService.register(this.form.value.username, this.form.value.password)
       .pipe(
         catchError((err: HttpErrorResponse) => {
           console.log(err);
           this.errorMessage = err.error ? err.error.message : err.message;
-          this.username = '';
-          this.password = '';
+          this.form.reset();
           return EMPTY;
         })
       )
