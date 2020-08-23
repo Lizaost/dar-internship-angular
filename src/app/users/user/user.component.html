@@ -1,6 +1,7 @@
 <a [routerLink]="['/users']" class="go-back-link">Go back to users list</a>
 <h1>User Info</h1>
 <ng-container *ngIf="user">
+  <a [routerLink]="['/users/form/', user.id]">Edit user</a>
   <table class="user-info">
     <tr>
       <td>Id</td>

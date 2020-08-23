@@ -1,0 +1,53 @@
+<div *ngIf="user">
+  <h1>Edit user {{ user.username }}</h1>
+  <form [formGroup]="form">
+    <div class="user-info-block" formGroupName="commonInfo">
+      <h2>Common info</h2>
+      <div class="form-group" *ngFor="let controlConfig of fieldNameMap.commonInfo">
+        <label class="form-control-label">{{ controlConfig.label }}</label>
+        <input class="form-control" type="text" [formControlName]="controlConfig.field" />
+        <div class="form-control-error">
+          <div class="form-control-error" *ngIf="form.get('commonInfo').get(controlConfig.field).touched && form.get('commonInfo').get(controlConfig.field).invalid">
+            <span *ngIf="form.get('commonInfo').get(controlConfig.field).errors.required">This field is required</span>
+            <span *ngIf="form.get('commonInfo').get(controlConfig.field).errors.email">Enter email</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-info-block" formGroupName="company">
+      <h2>Company</h2>
+      <div class="form-group" *ngFor="let controlConfig of fieldNameMap.company">
+        <label class="form-control-label">{{ controlConfig.label }}</label>
+        <input class="form-control" type="text" [formControlName]="controlConfig.field" />
+        <div class="form-control-error" *ngIf="form.get('company').get(controlConfig.field).touched && form.get('company').get(controlConfig.field).invalid">
+          <span *ngIf="form.get('company').get(controlConfig.field).errors.required">This field is required</span>
+        </div>
+      </div>
+      <div class="bs-list">
+        <h3>Business sectors</h3>
+        <div class="form-group inner" *ngFor="let control of bsFormArray.controls">
+          <input class="form-control" type="text" [formControl]="control" />
+          <button (click)="deleteBS(control)">Delete business sector</button>
+        </div>
+        <button (click)="addBS()">Add business sector</button>
+      </div>
+    </div>
+
+    <div class="user-info-block" formGroupName="address">
+      <h2>Address</h2>
+      <div class="form-group" *ngFor="let controlConfig of fieldNameMap.address">
+        <label class="form-control-label">{{ controlConfig.label }}</label>
+        <input class="form-control" type="text" [formControlName]="controlConfig.field" />
+        <div class="form-control-error" *ngIf="form.get('address').get(controlConfig.field).touched && form.get('address').get(controlConfig.field).invalid">
+          <span *ngIf="form.get('address').get(controlConfig.field).errors.required">This field is required</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-save-button-wrapper">
+      <button (click)="saveUserInfo()" type="button">Save user</button>
+    </div>
+
+  </form>
+</div>

@@ -6,28 +6,27 @@ import {CommonModule} from '@angular/common';
 import {UsersRoutingModule} from './users-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {UsersService} from './services/users.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UserDetailResolver} from './services/UserDetail.resolver';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
-  declarations: [
-    UsersComponent,
-    UserComponent
-  ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     UsersRoutingModule,
     SharedModule,
-    FormsModule,
   ],
-  exports: [
+  declarations: [
     UsersComponent,
-    UserComponent
+    UserComponent,
+    UserFormComponent,
   ],
   providers: [
     UsersService,
+    UserDetailResolver,
   ]
 })
-export class UsersModule {
-
-}
+export class UsersModule {}
