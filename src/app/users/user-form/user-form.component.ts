@@ -173,18 +173,12 @@ export class UserFormComponent implements OnInit {
   }
 
   saveUserInfo(): void {
-    this.user.name = this.form.get('commonInfo').get('name').value;
-    this.user.email = this.form.get('commonInfo').get('email').value;
-    this.user.phone = this.form.get('commonInfo').get('phone').value;
-
-    this.user.company.name = this.form.get('company').get('name').value;
-    this.user.company.catchPhrase = this.form.get('company').get('catchPhrase').value;
+    const formValue = this.form.getRawValue();
+    this.user = {...this.user, ...formValue.commonInfo};
+    this.user.company = {...this.user.company, ...formValue.company};
     this.user.company.bs = this.bsFormArray.value.join(' ');
+    this.user.address = {...this.user.address, ...formValue.address};
 
-    this.user.address.city = this.form.get('address').get('city').value;
-    this.user.address.street = this.form.get('address').get('street').value;
-    this.user.address.suite = this.form.get('address').get('suite').value;
-    this.user.address.zipcode = this.form.get('address').get('zipcode').value;
     const userJson = JSON.stringify(this.user);
     console.log(userJson);
   }
